@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Register">
 
     <TextView
-        android:id="@+id/title_text"
+        android:id="@+id/title_register_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cost Manager"
+        android:text="Register"
         android:textSize="20pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -18,29 +18,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/register_button"
+        android:id="@+id/regTomain_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="register"
+        android:text="to main"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_text" />
+        app:layout_constraintTop_toBottomOf="@+id/title_register_text" />
 
-    <Button
-        android:id="@+id/delete_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="delete"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_button" />
-
-    <Button
-        android:id="@+id/compare_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="compare"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/delete_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
