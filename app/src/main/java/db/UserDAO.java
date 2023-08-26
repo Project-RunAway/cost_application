@@ -19,8 +19,8 @@ public interface UserDAO {
 //    int getSearchId(String category);
     //String nameに一致する文字列をusersというtableのuser_nameから探し選んでそれに対応するidを返すメソッド
 
-//    @Query("SELECT * FROM cost_data WHERE category =:category")
-//    List<User> getSearch_db(String category);
+    @Query("SELECT * FROM cost_data WHERE category =:category")
+    List<User> getSearch_db(String category);
     //categoryが一致するもののカラムを抽出してlistで返す一旦消すことにするエラーのため
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
