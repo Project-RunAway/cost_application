@@ -10,20 +10,223 @@
         android:id="@+id/title_register_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="cursive"
         android:text="Register"
-        android:textSize="20pt"
+        android:textSize="25pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.042" />
+
+
+    <TextView
+        android:id="@+id/register_shopname_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="shop name"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.236" />
+
+    <EditText
+        android:id="@+id/edit_shopname"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:background="#aaaaaa"
+        android:hint="enter"
+        android:inputType="text"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/register_shopname_text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.236" />
+
+    <TextView
+        android:id="@+id/register_category_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="casual"
+        android:text="category"
+        android:textSize="28sp"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_shopname_text" />
+
+    <EditText
+        android:id="@+id/edit_category"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="24dp"
+        android:background="#aaaaaa"
+        android:hint="enter"
+        android:inputType="text"
+        android:textSize="28sp"
+        app:layout_constraintLeft_toRightOf="@+id/register_category_text"
+        app:layout_constraintTop_toBottomOf="@+id/edit_shopname" />
+
+    <TextView
+        android:id="@+id/register_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="casual"
+        android:text="name"
+        android:textSize="28sp"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_category_text" />
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="89dp"
+        android:layout_marginTop="27dp"
+        android:background="#aaaaaa"
+        android:hint="enter"
+        android:inputType="text"
+        android:textSize="28sp"
+        app:layout_constraintLeft_toRightOf="@+id/register_name_text"
+        app:layout_constraintTop_toBottomOf="@+id/edit_category" />
+
+    <TextView
+        android:id="@+id/register_cost_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="casual"
+        android:text="cost"
+        android:textSize="28sp"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_name_text" />
+
+    <EditText
+        android:id="@+id/edit_cost"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="108dp"
+        android:layout_marginTop="24dp"
+        android:background="#aaaaaa"
+        android:hint="enter"
+        android:inputType="text"
+        android:textSize="28sp"
+        app:layout_constraintLeft_toRightOf="@+id/register_cost_text"
+        app:layout_constraintTop_toBottomOf="@+id/edit_name" />
+
+    <TextView
+        android:id="@+id/register_date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="casual"
+        android:text="date"
+        android:textSize="28sp"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_cost_text" />
+
+    <EditText
+        android:id="@+id/edit_date"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="104dp"
+        android:layout_marginTop="25dp"
+        android:background="#aaaaaa"
+        android:hint="enter"
+        android:inputType="text"
+        android:textSize="28sp"
+        app:layout_constraintLeft_toRightOf="@+id/register_date_text"
+        app:layout_constraintTop_toBottomOf="@+id/edit_cost" />
+
+    <TextView
+        android:id="@+id/register_unit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="casual"
+        android:text="unit"
+        android:textSize="28sp"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_date_text" />
+
+
+    <EditText
+        android:id="@+id/edit_unit"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="108dp"
+        android:layout_marginTop="26dp"
+        android:background="#aaaaaa"
+        android:hint="enter"
+        android:inputType="text"
+        android:textSize="28sp"
+        app:layout_constraintLeft_toRightOf="@+id/register_unit_text"
+        app:layout_constraintTop_toBottomOf="@+id/edit_date" />
+
+    <TextView
+        android:id="@+id/register_remark_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="casual"
+        android:text="remark"
+        android:textSize="28sp"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_unit_text" />
+
+    <EditText
+        android:id="@+id/edit_remark"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="26dp"
+        android:background="#aaaaaa"
+        android:hint="enter"
+        android:inputType="text"
+        android:textSize="28sp"
+        app:layout_constraintLeft_toRightOf="@+id/register_remark_text"
+        app:layout_constraintTop_toBottomOf="@+id/edit_unit" />
 
     <Button
         android:id="@+id/regTomain_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginLeft="66dp"
+        android:layout_marginTop="52dp"
         android:text="to main"
+        android:textSize="16sp"
+        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_register_text" />
+        app:layout_constraintTop_toBottomOf="@+id/register_remark_text" />
+
+    <Button
+        android:id="@+id/done_button"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="52dp"
+        android:text="Done"
+        android:textSize="24sp"
+        app:layout_constraintLeft_toRightOf="@+id/regTomain_button"
+        app:layout_constraintTop_toBottomOf="@+id/edit_remark" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
