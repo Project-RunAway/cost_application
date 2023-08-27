@@ -23,6 +23,15 @@ public interface UserDAO {
     List<User> getSearch_db(String category);
     //categoryが一致するもののカラムを抽出してlistで返す一旦消すことにするエラーのため
 
+    @Query("SELECT id FROM cost_data WHERE name =:name AND date =:date")
+    int getSearch_id(String name,int date);//商品名と日付によってそのidを返すクエリ
+
+    @Query("SELECT * FROM cost_data WHERE name =:name AND date =:date")
+    User getSearch_object(String name,int date);//商品名と日付によってそのobjectを返すクエリ
+
+//    @Query("SELECT FROM cost_data WHERE id =:id)
+//    User getSearch_User(int id);//idによってそのobjectを返すクエリ
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(User user);
 
