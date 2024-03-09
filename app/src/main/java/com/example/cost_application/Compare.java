@@ -24,6 +24,7 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View v) {
         if (v.getId() == R.id.comTomain_button) {
             //register button push process
+
             startActivity(new Intent(this, MainActivity.class));
         }
         //名残
