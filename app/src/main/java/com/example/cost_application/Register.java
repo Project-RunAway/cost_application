@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
+import db.User;
+import db.UserDAO;
 
 public class Register extends AppCompatActivity implements View.OnClickListener{
     TextView t;
@@ -32,11 +34,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
     //    @Override
     //button push process
     public void onClick(View v) {
+        UserDAO userDAO = new UserDAO();
+        User user = new User("ion","cucumber","cucumber",321,230926,"7","ai");
         if (v.getId() == R.id.regTomain_button) {
             //register button push process
             startActivity(new Intent(this, MainActivity.class));
         }else if (v.getId() == R.id.done_button) {
             //register button push process
+
             startActivity(new Intent(this, Complete.class));
         }
         //名残
