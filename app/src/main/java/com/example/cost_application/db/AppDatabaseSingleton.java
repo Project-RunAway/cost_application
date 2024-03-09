@@ -1,4 +1,4 @@
-package db;
+package com.example.cost_application.db;
 
 import android.content.Context;
 import androidx.room.Room;

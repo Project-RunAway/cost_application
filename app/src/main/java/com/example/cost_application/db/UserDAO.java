@@ -1,6 +1,5 @@
-package db;
+package com.example.cost_application.db;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -31,6 +30,9 @@ public interface UserDAO {
 
 //    @Query("SELECT FROM cost_data WHERE id =:id)
 //    User getSearch_User(int id);//idによってそのobjectを返すクエリ
+
+    @Query("SELECT * FROM cost_data")
+    List<User> getAll();
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(User user);

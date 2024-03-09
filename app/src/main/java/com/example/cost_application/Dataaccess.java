@@ -5,12 +5,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 //package
-import db.UserDAO;
-import db.User;
-import db.AppDatabase;
-import db.AppDatabaseSingleton;
+import com.example.cost_application.db.UserDAO;
+import com.example.cost_application.db.User;
+import com.example.cost_application.db.AppDatabase;
+import com.example.cost_application.db.AppDatabaseSingleton;
 
 //databaseを扱うためのメソッドの定義をここに書く
 public class Dataaccess extends AppCompatActivity {

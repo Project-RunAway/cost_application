@@ -1,4 +1,4 @@
-package db;
+package com.example.cost_application.db;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -41,30 +41,47 @@ public class User {
         this.remark_str=remark_str;
     }
 
+    public void setShop_name(String s){this.shopName_str = s;}
     public String getShop_name(){
         return this.shopName_str;
     }
 
+    public void setCategory(String s){
+        this.category_str=s;
+    }
     public String getCategory(){
         return this.category_str;
     }
 
+    public void set_Name(String s){
+        this.name_str = s;
+    }
     public String get_Name(){
         return this.name_str;
     }
 
+    public void setCost(double d){
+        this.cost_num = d ;
+    }
     public double getCost(){
         return this.cost_num;
     }
 
+    public void setDate(int n){this.date_num = n;}
     public int getDate(){
         return this.date_num;
     }
 
+    public void setUnit(String s){
+        this.unit_str = s;
+    }
     public String getUnit(){
         return this.unit_str;
     }
 
+    public void setRemark(String s){
+        this.remark_str = s;
+    }
     public String getRemark(){
         return this.remark_str;
     }
