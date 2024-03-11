@@ -34,6 +34,15 @@ public interface UserDAO {
     @Query("SELECT * FROM cost_data")
     List<User> getAll();
 
+    //all delete
+    @Query("DELETE FROM cost_data")
+    void deleteAll();
+
+    //id=xのものを削除する
+    @Query("DELETE FROM cost_data WHERE id = :x")
+    void delete_id(int x);
+
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(User user);
 

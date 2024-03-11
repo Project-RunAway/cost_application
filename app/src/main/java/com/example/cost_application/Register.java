@@ -14,6 +14,10 @@ import com.example.cost_application.db.AppDatabaseSingleton;
 import com.google.android.material.snackbar.Snackbar;
 import com.example.cost_application.db.User;
 import com.example.cost_application.db.UserDAO;
+
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 //import db from "../";
 
 public class Register extends AppCompatActivity implements View.OnClickListener{
@@ -22,6 +26,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
     AppDatabase db;
     UserDAO userDAO;
     User user;
+    private List<User> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,18 +60,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         }else if (v.getId() == R.id.done_button) {
             //register button push process
             //書き込まれた内容をインスタンス変数に入れていく
-            user.shopName_str=shop_name_data.getText().toString();
-            user.category_str=category_data.getText().toString();
-            user.name_str=name_data.getText().toString();
-            user.cost_num=Integer.parseInt(cost_data.getText().toString());
-            user.date_num=Integer.parseInt(date_data.getText().toString());;
-            user.unit_str=unit_data.getText().toString();
-            //もし空なら空白を代入する
-            if(remark_data.getText().toString().isEmpty())user.remark_str=" ";
-            else user.remark_str=remark_data.getText().toString();
+            data_set();//最後参照
             //作成したuserを非同期でデータベースに挿入する
-            new InsertUserAsyncTask(userDAO).execute(user);
-            Log.d("Register", "Item ID: " + user.shopName_str);
+            write_db();
+            //new InsertUserAsyncTask(userDAO).execute(user);
+            //Log.d("Register", "Item ID: " + user.shopName_str);
 
             startActivity(new Intent(this, Complete.class));
         }
@@ -76,18 +74,77 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
     }
 
     //非同期に挿入するための関数
-    private static class InsertUserAsyncTask extends AsyncTask<User, Void, Void> {
-        public UserDAO userDAO;
+    private void write_db(){
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(new Runnable(){
+            @Override
+            public void run() {
+                try {
+                    db = AppDatabaseSingleton.getInstance(getApplicationContext());
+                    userDAO = db.userDAO();
+                    //add insert
+                    userDAO.insert(user);
+                    Log.d("data_test_write","complete insert");
+                    load_db();//データベースの読み込み
+                } catch(Exception e){
+                    Log.d("data_test","error");
+                }
+            }
+        });
+    }
+//    private static class InsertUserAsyncTask extends AsyncTask<User, Void, Void> {
+//        public UserDAO userDAO;
+//
+//        private InsertUserAsyncTask(UserDAO userDAO) {
+//            this.userDAO = userDAO;
+//        }
+//
+//        @Override
+//        protected Void doInBackground(User... items) {
+//            userDAO.insert(items[0]);
+//            return null;
+//        }
+//    }
 
-        private InsertUserAsyncTask(UserDAO userDAO) {
-            this.userDAO = userDAO;
-        }
+    private void load_db(){
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(new Runnable(){
+            @Override
+            public void run(){
+                db = AppDatabaseSingleton.getInstance(getApplicationContext());
+                userDAO =db.userDAO();
 
-        @Override
-        protected Void doInBackground(User... items) {
-            userDAO.insert(items[0]);
-            return null;
-        }
+                list = userDAO.getAll();
+
+                if(list.size() > 0){
+                    User entity = list.get(0);
+                    String sn = entity.getShop_name();
+                    String n = entity.get_Name();
+                    String cn = entity.get_Name();
+                    double co = entity.getCost();
+                    int da = entity.getDate();
+                    String u = entity.getUnit();
+                    String r = entity.getRemark();
+
+                    Log.d("database_test",sn +":"+n+":"+cn);
+
+                }else {
+                    Log.d("no_data","no data");
+                }
+            }
+        });
+    }
+
+    public void data_set(){
+        user.shopName_str=shop_name_data.getText().toString();
+        user.category_str=category_data.getText().toString();
+        user.name_str=name_data.getText().toString();
+        user.cost_num=Integer.parseInt(cost_data.getText().toString());
+        user.date_num=Integer.parseInt(date_data.getText().toString());;
+        user.unit_str=unit_data.getText().toString();
+        //もし空なら空白を代入する
+        if(remark_data.getText().toString().isEmpty())user.remark_str=" ";
+        else user.remark_str=remark_data.getText().toString();
     }
 }
 
