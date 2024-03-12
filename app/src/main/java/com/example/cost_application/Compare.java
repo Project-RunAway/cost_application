@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -64,6 +65,11 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
 //        userDAO = db.userDAO();
         //一時的にここに取得するものをかく
         load_db();
+        if (!Compare.this.isFinishing() && !Compare.this.isDestroyed()) {
+            // アクティビティは生存しており、安全にContextを使用できます。
+            Log.d("Compare.this alive in Compare.java","passed");
+        }
+
 //        new GetItemsAsyncTask(userDAO, (GetItemsAsyncTask.OnTaskCompleted) this).execute();
     }
 
@@ -100,6 +106,10 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                     data.put("text1", sn2);//店名
                     data.put("text2", n2);//商品名
                     data.put("text3", String.valueOf(co2));//値段
+                    data.put("category", cn2);//category
+                    data.put("date", String.valueOf(da2));//date
+                    data.put("unit", u2);//unit
+                    data.put("remark", r2);//remark
                     dataList.add(data);
                 }
 
@@ -111,7 +121,8 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                         new String[]{"text1", "text2", "text3"},
                         new int[]{android.R.id.text1,
                                 android.R.id.text2,
-                                R.id.text3});
+                                R.id.text3},
+                        Compare.this);
 
                 // ListViewにアダプターをSETする
                 listView = (ListView) findViewById(R.id.data_list);

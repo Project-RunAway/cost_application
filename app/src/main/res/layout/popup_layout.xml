@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+    <TextView
+        android:id="@+id/shop_name_pop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:text="def" />
+<!--    <TextView-->
+<!--        android:id="@+id/category_pop"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--        android:text="def" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/name_pop"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--        android:text="def" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/cost_pop"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--        android:text="def" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/date_pop"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--        android:text="def" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/unit_pop"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--        android:text="def" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/remark_pop"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--        android:text="def" />-->
+    <Button
+        android:id="@+id/close_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|right"
+        android:text="閉じる" />
+</LinearLayout>
