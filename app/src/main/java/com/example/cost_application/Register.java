@@ -65,8 +65,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             write_db();
             //new InsertUserAsyncTask(userDAO).execute(user);
             //Log.d("Register", "Item ID: " + user.shopName_str);
-
-            startActivity(new Intent(this, Complete.class));
+            //ダイアログフラグメントのオブジェクトを生成
+            //Dialog dialog = new Dialog();
+            //ダイアログの表示
+            //dialog.show(getSupportFragmentManager(),"Dialog");
+            startActivity(new Intent(this, Complete.class));//画面遷移
         }
         //名残
         Snackbar.make(v, "ボタンが押されました", Snackbar.LENGTH_SHORT).show();

@@ -4,6 +4,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,15 +17,38 @@ import com.example.cost_application.db.User;
 import com.example.cost_application.db.UserDAO;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Compare extends AppCompatActivity implements View.OnClickListener{
     TextView t;
+    EditText search_bar_edit;
     AppDatabase db;
     UserDAO userDAO;
     User user;
+    String search_category;
+
+    //追加項目
+    //Map<string,string>は<key,value>という意味合いを持つ
+    public static Map<String, String> data;
+    public static List<Map<String, String>> dataList;
+    public static ListView listView;
+    public static ListViewAdapter adapter;
 
     private List<User> list;
     @Override
@@ -32,7 +57,9 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_compare);
         //add button listener
         findViewById(R.id.comTomain_button).setOnClickListener(this);
-        t= findViewById(R.id.title_compare_text);
+        findViewById(R.id.compare_done_button).setOnClickListener(this);
+//        t= findViewById(R.id.title_compare_text);
+        search_bar_edit = findViewById(R.id.search_bar);
 //        db = AppDatabaseSingleton.getInstance(getApplicationContext());//データベースのインスタンス
 //        userDAO = db.userDAO();
         //一時的にここに取得するものをかく
@@ -47,13 +74,91 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
             //register button push process
 
             startActivity(new Intent(this, MainActivity.class));
+        }else if(v.getId() == R.id.compare_done_button){
+            Log.d("Compare.java 77rows","passed");
+            //search button push process
+            //textviewの読み込み
+            if(search_bar_edit.getText().toString().isEmpty()){Log.d("Compare.java 79rows","passed");}
+            else {
+                search_category = search_bar_edit.getText().toString();
+                //listにcategoryで検索されたUserのオブジェクトを入れる
+                search_category_db(search_category);//さらに値段順にソートして返す
+                //dataのlistへの格納と表示
+                dataList = new ArrayList<Map<String, String>>();
+
+                // ListViewに表示するためのDATAを作成する
+                for (int i = 0; i < list.size(); i++) {
+                    data = new HashMap<String, String>();
+                    User entity_instant = list.get(i);
+                    String sn2 = entity_instant.getShop_name();
+                    String n2 = entity_instant.get_Name();
+                    String cn2 = entity_instant.getCategory();
+                    double co2 = entity_instant.getCost();
+                    int da2 = entity_instant.getDate();
+                    String u2 = entity_instant.getUnit();
+                    String r2 = entity_instant.getRemark();
+                    data.put("text1", sn2);//店名
+                    data.put("text2", n2);//商品名
+                    data.put("text3", String.valueOf(co2));//値段
+                    dataList.add(data);
+                }
+
+                // アダプターにデータを渡す
+                adapter = new ListViewAdapter(
+                        this,
+                        dataList,
+                        R.layout.row,
+                        new String[]{"text1", "text2", "text3"},
+                        new int[]{android.R.id.text1,
+                                android.R.id.text2,
+                                R.id.text3});
+
+                // ListViewにアダプターをSETする
+                listView = (ListView) findViewById(R.id.data_list);
+                listView.setAdapter(adapter);
+                listView.setTextFilterEnabled(false);
+                Log.d("Compare.java 118rows","passed");
+            }
         }
         //名残
         Snackbar.make(v, "ボタンが押されました", Snackbar.LENGTH_SHORT).show();
         //
     }
 
-    //database読み込み
+    //databaseからcategory検索してlistに格納
+    private void search_category_db(String s){//sはcategory名
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(new Runnable(){
+            @Override
+            public void run(){
+                db = AppDatabaseSingleton.getInstance(getApplicationContext());
+                userDAO =db.userDAO();
+
+                list = userDAO.getAll();//ここをカテゴリで絞って取得
+                //listの値段順にソートする
+
+
+                if(list.size() > 0){
+                    for(int number=0;number<list.size();number++) {
+                        User entity = list.get(number);
+                        String sn = entity.getShop_name();
+                        String n = entity.get_Name();
+                        String cn = entity.get_Name();
+                        double co = entity.getCost();
+                        int da = entity.getDate();
+                        String u = entity.getUnit();
+                        String r = entity.getRemark();
+
+                        Log.d("database_test", sn + ":" + n + ":" + cn+ ":" + co+ ":" + da+ ":" + u+ ":" + r);
+                    }
+                }else {
+                    Log.d("no_data","no data");
+                }
+            }
+        });
+    }
+
+    //database全ての読み込み
     private void load_db(){
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(new Runnable(){

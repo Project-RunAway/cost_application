@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">cost_Application</string>
+    <string name="text_view">Hello World</string>
+    <string name="dialog_title">confirmation</string>
+    <string name="dialog_message">Completion of registration</string>
+    <string name="dialog_button_ok">OK</string>
+    <string name="dialog_button_cancel">Cancel</string>
+    <string name="dialog_button_neutral">Neutral</string>
 </resources>
+
