@@ -18,9 +18,12 @@ public interface UserDAO {
 //    int getSearchId(String category);
     //String nameに一致する文字列をusersというtableのuser_nameから探し選んでそれに対応するidを返すメソッド
 
-    @Query("SELECT * FROM cost_data WHERE category =:category")
+    @Query("SELECT * FROM cost_data WHERE category =:category ORDER BY cost ASC ,date DESC")
     List<User> getSearch_db(String category);
     //categoryが一致するもののカラムを抽出してlistで返す一旦消すことにするエラーのため
+
+//    @Query("SELECT * FROM cost_data ORDER BY cost DESC")
+//    List<User> getSearch_db(String category);
 
     @Query("SELECT id FROM cost_data WHERE name =:name AND date =:date")
     int getSearch_id(String name,int date);//商品名と日付によってそのidを返すクエリ

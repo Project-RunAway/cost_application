@@ -88,11 +88,25 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
             else {
                 search_category = search_bar_edit.getText().toString();
                 //listにcategoryで検索されたUserのオブジェクトを入れる
-                search_category_db(search_category);//さらに値段順にソートして返す
+//                long startTime = System.nanoTime();
+//                Log.d("time_Test", "—start—");
+                search_category_db(search_category);
+//                long endTime = System.nanoTime();
+//                long diff = endTime - startTime;
+//                Log.d("time_test","time–>" + diff);
+//                search_category_db(search_category);
+                //ここで本来なら処理を分岐させて最後に結合するが難しいので処理を強制停止する200ms
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+                //sort();//ここで値段順ソートする
                 //dataのlistへの格納と表示
                 dataList = new ArrayList<Map<String, String>>();
 
-                // ListViewに表示するためのDATAを作成する
+                // ListViewに表示するためのDataを作成する
                 for (int i = 0; i < list.size(); i++) {
                     data = new HashMap<String, String>();
                     User entity_instant = list.get(i);
@@ -112,7 +126,7 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                     data.put("remark", r2);//remark
                     dataList.add(data);
                 }
-
+                Log.d("rear","rear");
                 // アダプターにデータを渡す
                 adapter = new ListViewAdapter(
                         this,
@@ -136,8 +150,21 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
         //
     }
 
+    //listを値段順に並べる
+    private void sort(List<User> l){
+
+    }
+
+
+    private void swift(User a,User b){
+        User instant;
+        instant=a;
+        a=b;
+        b=instant;
+    }
+
     //databaseからcategory検索してlistに格納
-    private void search_category_db(String s){//sはcategory名
+    private void search_category_db(String search){//sはcategory名
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(new Runnable(){
             @Override
@@ -145,24 +172,28 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                 db = AppDatabaseSingleton.getInstance(getApplicationContext());
                 userDAO =db.userDAO();
 
-                list = userDAO.getAll();//ここをカテゴリで絞って取得
+                //test 全ての取得
+                //list = userDAO.getAll();
+                //カテゴリで絞って取得
+                list = userDAO.getSearch_db(search);
                 //listの値段順にソートする
-
+                Log.d("front","front");
 
                 if(list.size() > 0){
                     for(int number=0;number<list.size();number++) {
                         User entity = list.get(number);
                         String sn = entity.getShop_name();
                         String n = entity.get_Name();
-                        String cn = entity.get_Name();
+                        String cn = entity.getCategory();
                         double co = entity.getCost();
                         int da = entity.getDate();
                         String u = entity.getUnit();
                         String r = entity.getRemark();
 
-                        Log.d("database_test", sn + ":" + n + ":" + cn+ ":" + co+ ":" + da+ ":" + u+ ":" + r);
+                        Log.d("database_category", sn + ":" + n + ":" + cn+ ":" + co+ ":" + da+ ":" + u+ ":" + r);
                     }
                 }else {
+                    Log.d("front","front");
                     Log.d("no_data","no data");
                 }
             }

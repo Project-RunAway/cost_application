@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -21,10 +22,12 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
     View popupView;
     View view_receive;
 //    LinearLayout line;
-
+    TextView field1,field2,field3,field4,field5,field6,field7;
     private Activity activity;
     //ボタンのオブジェクトを貰い受ける
-    public PopWindow(View view, Activity activity) {
+    public PopWindow(View view, Activity activity,String t1,String t2,String t3,String t4,String t5,String t6,String t7) {
+//        setContentView(R.layout.popup_layout);
+        //引数からのローカル変数へ代入
         view_receive = view;
         this.activity = activity;
 //        line = this.activity.findViewById(R.id.rowlayout_);
@@ -40,6 +43,23 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
         // 使用するレイアウトを指定する
         popupView = this.activity.getLayoutInflater().inflate(R.layout.popup_layout, null);
         if(popupView==null)Log.d("popupView == null　34","passed");
+        field1 = (TextView)popupView.findViewById(R.id.shop_name_pop);
+        field2 = (TextView)popupView.findViewById(R.id.category_pop);
+        field3 = (TextView)popupView.findViewById(R.id.name_pop);
+        field4 = (TextView)popupView.findViewById(R.id.cost_pop);
+        field5 = (TextView)popupView.findViewById(R.id.date_pop);
+        field6 = (TextView)popupView.findViewById(R.id.unit_pop);
+        field7 = (TextView)popupView.findViewById(R.id.remark_pop);
+        //詳細をpopのなかにsetする
+        if(field1==null)Log.d("field == null　","passed");
+        if(t1==null)Log.d("t1 == null　","passed");
+        field1.setText("店名 : "+t1);
+        field2.setText("分類 : "+t2);
+        field3.setText("名前 : "+t3);
+        field4.setText("値段 : "+t4);
+        field5.setText("日付 : "+t5);
+        field6.setText("単位 : "+t6);
+        field7.setText("備考 : "+t7);
         popupWindow.setContentView(popupView);
 
         // popup表示時に、他のButtonなどを無効にする
@@ -65,10 +85,11 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.popup_layout);
         // 背景設定
-        popupWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.popup_background));
+        popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(this.activity,R.drawable.popup_background));
         // 使用するレイアウトを指定する
-        popupView = getLayoutInflater().inflate(R.layout.popup_layout, null);
+        popupView = this.activity.getLayoutInflater().inflate(R.layout.popup_layout, null);
         if(popupView==null)Log.d("popupView == null　41","passed");
         popupWindow.setContentView(popupView);
 
@@ -77,7 +98,7 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
         popupWindow.setFocusable(true);
 
         // 表示サイズを設定
-        popupWindow.setWidth(findViewById(R.id.rowlayout_).getWidth() / 10 * 9);
+        popupWindow.setWidth(this.activity.findViewById(R.id.rowlayout_).getWidth() / 10 * 9);
         popupWindow.setHeight(480);
 
         // PopupWindow内のボタンにクリック時の処理を定義する
@@ -106,7 +127,7 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
         popupWindow = new PopupWindow(this.activity);
 
         // 背景設定
-        popupWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.popup_background));
+        popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(this.activity,R.drawable.popup_background));
 
         // 使用するレイアウトを指定する
         popupView = getLayoutInflater().inflate(R.layout.popup_layout, null);

@@ -8,43 +8,57 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:text="def" />
-<!--    <TextView-->
-<!--        android:id="@+id/category_pop"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center_horizontal|center_vertical"-->
-<!--        android:text="def" />-->
-<!--    <TextView-->
-<!--        android:id="@+id/name_pop"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center_horizontal|center_vertical"-->
-<!--        android:text="def" />-->
-<!--    <TextView-->
-<!--        android:id="@+id/cost_pop"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center_horizontal|center_vertical"-->
-<!--        android:text="def" />-->
-<!--    <TextView-->
-<!--        android:id="@+id/date_pop"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center_horizontal|center_vertical"-->
-<!--        android:text="def" />-->
-<!--    <TextView-->
-<!--        android:id="@+id/unit_pop"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center_horizontal|center_vertical"-->
-<!--        android:text="def" />-->
-<!--    <TextView-->
-<!--        android:id="@+id/remark_pop"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center_horizontal|center_vertical"-->
-<!--        android:text="def" />-->
+        android:text="def"
+        android:textSize="32dp"
+        android:paddingLeft="4sp"/>
+    <TextView
+        android:id="@+id/category_pop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:text="def"
+        android:textSize="32dp"
+        android:paddingLeft="4sp"/>
+    <TextView
+        android:id="@+id/name_pop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:text="def"
+        android:textSize="32dp"
+        android:paddingLeft="4sp"/>
+    <TextView
+        android:id="@+id/cost_pop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:text="def"
+        android:textSize="32dp"
+        android:paddingLeft="4sp"/>
+    <TextView
+        android:id="@+id/date_pop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:text="def"
+        android:textSize="32dp"
+        android:paddingLeft="4sp"/>
+    <TextView
+        android:id="@+id/unit_pop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:text="def"
+        android:textSize="32dp"
+        android:paddingLeft="4sp"/>
+    <TextView
+        android:id="@+id/remark_pop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:text="def"
+        android:textSize="32dp"
+        android:paddingLeft="4sp"/>
     <Button
         android:id="@+id/close_button"
         android:layout_width="wrap_content"

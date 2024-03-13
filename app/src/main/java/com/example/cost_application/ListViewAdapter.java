@@ -89,7 +89,7 @@ public class ListViewAdapter extends SimpleAdapter {
                 holder.text2.setTextColor(Color.RED);
                 holder.text3.setTextColor(Color.RED);
                 //かくぼたんのクリック処理をここに書く、、ここにpop windowの処理をかく
-                PopWindow popWindow = new PopWindow(arg0,activity);
+                PopWindow popWindow = new PopWindow(arg0,activity,text1,category,text2,text3,date,unit,remark);
                 popWindow.displayPopup(arg0);
             }
 
