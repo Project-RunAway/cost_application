@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -63,12 +64,15 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             data_set();//最後参照
             //作成したuserを非同期でデータベースに挿入する
             write_db();
+            hideKeyboard(remark_data);
+//            hideKeyboard(shop_name_data,category_data,name_data,cost_data,date_data,unit_data,remark_data);
             //new InsertUserAsyncTask(userDAO).execute(user);
             //Log.d("Register", "Item ID: " + user.shopName_str);
             //ダイアログフラグメントのオブジェクトを生成
             //Dialog dialog = new Dialog();
             //ダイアログの表示
             //dialog.show(getSupportFragmentManager(),"Dialog");
+
             startActivity(new Intent(this, Complete.class));//画面遷移
         }
         //名残
@@ -148,6 +152,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         //もし空なら空白を代入する
         if(remark_data.getText().toString().isEmpty())user.remark_str=" ";
         else user.remark_str=remark_data.getText().toString();
+    }
+    private void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Register.this.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
 

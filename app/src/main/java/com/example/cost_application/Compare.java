@@ -35,13 +35,15 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import android.view.inputmethod.InputMethodManager;
+
 
 public class Compare extends AppCompatActivity implements View.OnClickListener{
     TextView t;
     EditText search_bar_edit;
     AppDatabase db;
     UserDAO userDAO;
-    User user;
+    User user,entity;
     String search_category;
 
     //追加項目
@@ -78,9 +80,11 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View v) {
         if (v.getId() == R.id.comTomain_button) {
             //register button push process
-
+            //画面遷移
             startActivity(new Intent(this, MainActivity.class));
         }else if(v.getId() == R.id.compare_done_button){
+            //keyboardをたたむ
+            hideKeyboard(search_bar_edit);
             Log.d("Compare.java 77rows","passed");
             //search button push process
             //textviewの読み込み
@@ -105,11 +109,11 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                 //sort();//ここで値段順ソートする
                 //dataのlistへの格納と表示
                 dataList = new ArrayList<Map<String, String>>();
-
                 // ListViewに表示するためのDataを作成する
                 for (int i = 0; i < list.size(); i++) {
                     data = new HashMap<String, String>();
                     User entity_instant = list.get(i);
+                    entity = list.get(i);
                     String sn2 = entity_instant.getShop_name();
                     String n2 = entity_instant.get_Name();
                     String cn2 = entity_instant.getCategory();
@@ -136,7 +140,9 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                         new int[]{android.R.id.text1,
                                 android.R.id.text2,
                                 R.id.text3},
-                        Compare.this);
+                        Compare.this,
+                        this,
+                        entity);
 
                 // ListViewにアダプターをSETする
                 listView = (ListView) findViewById(R.id.data_list);
@@ -249,6 +255,30 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                 }
             }
         });
+    }
+
+    public void delete_db(User u){
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(new Runnable(){
+            @Override
+            public void run() {
+                try {
+                    db = AppDatabaseSingleton.getInstance(getApplicationContext());
+                    userDAO = db.userDAO();
+                    //add insert
+                    userDAO.delete(u);
+                    Log.d("delete","complete delete");
+                    load_db();
+                } catch(Exception e){
+                    Log.d("data_delete_test","error");
+                }
+            }
+        });
+    }
+
+    private void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Compare.this.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
 //    @Override

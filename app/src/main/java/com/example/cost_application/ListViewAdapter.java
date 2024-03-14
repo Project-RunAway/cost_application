@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Map;
 import android.os.Bundle;
 
+import com.example.cost_application.db.User;
+
 public class ListViewAdapter extends SimpleAdapter {
 
     private LayoutInflater inflater;
@@ -25,6 +27,11 @@ public class ListViewAdapter extends SimpleAdapter {
     // list---> key(text1) 値,key(text2) 値,key(text3) 値のように格納していく。
     private List<? extends Map<String, ?>> listData;
     private Activity activity;
+    List<User> list;
+    String search_category;
+    User user;
+
+    Compare compare;
 
     // 各行が保持するデータ保持クラス
     public class ViewHolder {
@@ -33,11 +40,20 @@ public class ListViewAdapter extends SimpleAdapter {
         TextView text3;//商品の値段
     }
 
-    public ListViewAdapter(Context context, List<? extends Map<String, ?>> data, int resource, String[] from, int[] to,Activity activity) {
+    public ListViewAdapter(Context context,
+                           List<? extends Map<String, ?>> data,
+                           int resource,
+                           String[] from,
+                           int[] to,
+                           Activity activity,
+                           Compare compare,
+                           User user) {
         super(context, data, resource, from, to);
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.listData = data;
         this.activity = activity;
+        this.compare =compare;
+        this.user=user;
     }
 
     @Override
@@ -89,7 +105,7 @@ public class ListViewAdapter extends SimpleAdapter {
                 holder.text2.setTextColor(Color.RED);
                 holder.text3.setTextColor(Color.RED);
                 //かくぼたんのクリック処理をここに書く、、ここにpop windowの処理をかく
-                PopWindow popWindow = new PopWindow(arg0,activity,text1,category,text2,text3,date,unit,remark);
+                PopWindow popWindow = new PopWindow(arg0,activity,text1,category,text2,text3,date,unit,remark,compare,user);
                 popWindow.displayPopup(arg0);
             }
 

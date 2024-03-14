@@ -15,6 +15,8 @@ import androidx.core.content.ContextCompat;
 import com.example.cost_application.db.AppDatabaseSingleton;
 import com.example.cost_application.db.User;
 
+import java.util.List;
+
 
 public class PopWindow extends AppCompatActivity implements View.OnClickListener{
 
@@ -23,13 +25,21 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
     View view_receive;
 //    LinearLayout line;
     TextView field1,field2,field3,field4,field5,field6,field7;
+    List<User> list;
+    String search_category;
+    Compare compare;
+    User user;
     private Activity activity;
     //ボタンのオブジェクトを貰い受ける
-    public PopWindow(View view, Activity activity,String t1,String t2,String t3,String t4,String t5,String t6,String t7) {
+    public PopWindow(View view, Activity activity,
+                     String t1,String t2,String t3,String t4,String t5,String t6,String t7,
+                     Compare compare,User user) {
 //        setContentView(R.layout.popup_layout);
         //引数からのローカル変数へ代入
         view_receive = view;
         this.activity = activity;
+        this.compare = compare;
+        this.user = user;
 //        line = this.activity.findViewById(R.id.rowlayout_);
         popupWindow = new PopupWindow(this.activity);
 //        popupWindow.setWi
@@ -68,15 +78,27 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
 
         // 表示サイズを設定
 //        if(findViewById(R.id.rowlayout_)==null)Log.d("findViewById(R.id.rowlayout_)==null","passed");
-        popupWindow.setWidth(this.activity.findViewById(R.id.row_lay_sub).getWidth() / 10 * 9);
+        popupWindow.setWidth(this.activity.findViewById(R.id.compare_all).getWidth() / 10 * 9);
 //        popupWindow.setWidth(800);
-        popupWindow.setHeight(960);
+        popupWindow.setHeight(this.activity.findViewById(R.id.compare_all).getHeight()/ 2);
 
-        // PopupWindow内のボタンにクリック時の処理を定義する
+        // PopupWindow内のcloseボタンにクリック時の処理を定義する
         popupView.findViewById(R.id.close_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 popupWindow.dismiss();
+            }
+        });
+
+        // PopupWindow内のdeleteボタンにクリック時の処理を定義する
+        popupView.findViewById(R.id.pop_delete_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("button","pop_delete_button");
+                compare.delete_db(user);
+                popupWindow.dismiss();
+                //reloaded db and display
+                compare.onClick(activity.findViewById(R.id.compare_done_button));
             }
         });
 
@@ -140,7 +162,7 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
 
         // 表示サイズを設定
         popupWindow.setWidth(findViewById(R.id.rowlayout_).getWidth() / 10 * 9);
-        popupWindow.setHeight(480);
+        popupWindow.setHeight(findViewById(R.id.rowlayout_).getHeight() / 10 * 7);
 
         // PopupWindow内のボタンにクリック時の処理を定義する
         popupView.findViewById(R.id.close_button).setOnClickListener(new View.OnClickListener() {

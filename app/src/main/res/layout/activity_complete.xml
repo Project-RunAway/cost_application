@@ -11,34 +11,56 @@
         android:layout_height="match_parent"
         android:src="@drawable/main_background"
         android:scaleType="centerCrop"/>
-
     <TextView
         android:id="@+id/title_complete_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="cursive"
         android:text="Complete"
-        android:textSize="20pt"
+        android:textColor="@color/blue_violet"
+        android:textSize="25pt"
+        android:textStyle="bold"
+        android:backgroundTint="@color/white_smoke"
+        android:alpha="1.0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.08" />
 
     <Button
         android:id="@+id/completeTomain_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="to main"
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="84dp"
+        android:fontFamily="cursive"
+        android:text="Menu"
+        android:textSize="34sp"
+        android:backgroundTint="@null"
+        android:background="@drawable/button_custum"
+        app:backgroundTint="@null"
+        app:iconPadding="12dp"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_complete_text" />
+
     <Button
         android:id="@+id/completeTocom_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="to compare"
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="cursive"
+        android:text="Compare"
+        android:textSize="34sp"
+        android:backgroundTint="@null"
+        android:background="@drawable/button_custum"
+        app:backgroundTint="@null"
+        app:iconPadding="12dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/completeTomain_button" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

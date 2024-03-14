@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="8dp">
 
@@ -10,66 +11,93 @@
 <!--        android:src="@drawable/main_background"-->
 <!--        android:scaleType="centerCrop"/>-->
 
-    <TextView
-        android:id="@+id/shop_name_pop"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:text="def"
-        android:textSize="32dp"
-        android:paddingLeft="4sp"/>
-    <TextView
-        android:id="@+id/category_pop"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:padding="8dp">
+        <TextView
+            android:id="@+id/shop_name_pop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="def"
+            android:textSize="32dp"
+            android:paddingLeft="4sp"/>
+        <TextView
+            android:id="@+id/category_pop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="def"
+            android:textSize="32dp"
+            android:paddingLeft="4sp"/>
+        <TextView
+            android:id="@+id/name_pop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="def"
+            android:textSize="32dp"
+            android:paddingLeft="4sp"/>
+        <TextView
+            android:id="@+id/cost_pop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="def"
+            android:textSize="32dp"
+            android:paddingLeft="4sp"/>
+        <TextView
+            android:id="@+id/date_pop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="def"
+            android:textSize="32dp"
+            android:paddingLeft="4sp"/>
+        <TextView
+            android:id="@+id/unit_pop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="def"
+            android:textSize="32dp"
+            android:paddingLeft="4sp"/>
+        <TextView
+            android:id="@+id/remark_pop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="def"
+            android:textSize="32dp"
+            android:paddingLeft="4sp"/>
+
+
+    </LinearLayout>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:text="def"
-        android:textSize="32dp"
-        android:paddingLeft="4sp"/>
-    <TextView
-        android:id="@+id/name_pop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:text="def"
-        android:textSize="32dp"
-        android:paddingLeft="4sp"/>
-    <TextView
-        android:id="@+id/cost_pop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:text="def"
-        android:textSize="32dp"
-        android:paddingLeft="4sp"/>
-    <TextView
-        android:id="@+id/date_pop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:text="def"
-        android:textSize="32dp"
-        android:paddingLeft="4sp"/>
-    <TextView
-        android:id="@+id/unit_pop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:text="def"
-        android:textSize="32dp"
-        android:paddingLeft="4sp"/>
-    <TextView
-        android:id="@+id/remark_pop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:text="def"
-        android:textSize="32dp"
-        android:paddingLeft="4sp"/>
-    <Button
-        android:id="@+id/close_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|right"
-        android:text="閉じる" />
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/close_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="@color/blue_violet"
+            android:text="閉じる"/>
+
+        <Button
+            android:id="@+id/pop_delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:backgroundTint="@color/blue_violet"
+            android:text="削除"/>
+    </RelativeLayout>
+
 </LinearLayout>
