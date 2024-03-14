@@ -44,11 +44,15 @@
         <Button
             android:id="@+id/rowbutton"
             android:layout_width="20sp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:focusable="false"
             android:layout_weight="0.2"
             android:focusableInTouchMode="false"
-            android:text="detail" />
+            android:text="detail"
+            android:textSize="16sp"
+            android:fontFamily="cursive"
+            android:backgroundTint="@color/purple_gs" />
+<!--        android:background="@drawable/detail_background"-->
 
     </LinearLayout>
 </LinearLayout>

@@ -12,14 +12,22 @@
 <!--        android:layout_height="wrap_content"-->
 <!--        tools:ignore="MissingConstraints">-->
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/main_background"
+        android:scaleType="centerCrop"/>
+
     <EditText
         android:id="@+id/search_bar"
-        android:layout_width="200sp"
+        android:layout_width="230sp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
-        android:background="#aaaaaa"
-        android:hint="enter category"
+        android:backgroundTint="@null"
+        android:background="@drawable/edittext_backgroud"
+        app:backgroundTint="@null"
+        android:hint=" enter category"
         android:inputType="text"
         android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +49,13 @@
             android:id="@+id/comTomain_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="to main"
+            android:text="Menu"
+            android:fontFamily="cursive"
+            android:backgroundTint="@null"
+            android:background="@drawable/button_custum"
+            android:layout_marginTop="5dp"
+            android:textSize="28sp"
+            app:backgroundTint="@null"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/data_list" />
@@ -51,7 +65,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Done"
-            android:layout_marginLeft="80dp"
+            android:textSize="28sp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="7dp"
+            android:fontFamily="cursive"
+            android:backgroundTint="@null"
+            android:background="@drawable/button_custum"
+            app:backgroundTint="@null"
             app:layout_constraintStart_toEndOf="@id/search_bar"
             app:layout_constraintTop_toTopOf="@id/search_bar"
             app:layout_constraintBottom_toBottomOf="@id/search_bar" />
@@ -60,6 +80,7 @@
             android:id="@+id/data_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12sp"
             app:layout_constraintTop_toBottomOf="@+id/search_bar"
             tools:ignore="MissingConstraints" />
 <!--    </RelativeLayout>-->
