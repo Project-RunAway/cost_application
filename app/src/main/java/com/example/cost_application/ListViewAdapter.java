@@ -47,13 +47,13 @@ public class ListViewAdapter extends SimpleAdapter {
                            int[] to,
                            Activity activity,
                            Compare compare,
-                           User user) {
+                           List<User> list) {
         super(context, data, resource, from, to);
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.listData = data;
         this.activity = activity;
         this.compare =compare;
-        this.user=user;
+        this.list=list;
     }
 
     @Override
@@ -86,10 +86,12 @@ public class ListViewAdapter extends SimpleAdapter {
         String text1 = ((HashMap<?, ?>) listData.get(position)).get("text1").toString();//店名
         String text2 = ((HashMap<?, ?>) listData.get(position)).get("text2").toString();//商品名
         String text3 = ((HashMap<?, ?>) listData.get(position)).get("text3").toString();//値段
-        String category = ((HashMap<?, ?>) listData.get(position)).get("category").toString();//値段
-        String date = ((HashMap<?, ?>) listData.get(position)).get("date").toString();//値段
-        String unit = ((HashMap<?, ?>) listData.get(position)).get("unit").toString();//値段
-        String remark = ((HashMap<?, ?>) listData.get(position)).get("remark").toString();//値段
+        String category = ((HashMap<?, ?>) listData.get(position)).get("category").toString();//category
+        String date = ((HashMap<?, ?>) listData.get(position)).get("date").toString();//date
+        String unit = ((HashMap<?, ?>) listData.get(position)).get("unit").toString();//unit
+        String remark = ((HashMap<?, ?>) listData.get(position)).get("remark").toString();//remark
+        String id = ((HashMap<?, ?>) listData.get(position)).get("id").toString();//id
+        user = list.get(position);
         holder.text1.setText(text1);
         holder.text2.setText(text2);
         holder.text3.setText(text3);
@@ -105,7 +107,7 @@ public class ListViewAdapter extends SimpleAdapter {
                 holder.text2.setTextColor(Color.RED);
                 holder.text3.setTextColor(Color.RED);
                 //かくぼたんのクリック処理をここに書く、、ここにpop windowの処理をかく
-                PopWindow popWindow = new PopWindow(arg0,activity,text1,category,text2,text3,date,unit,remark,compare,user);
+                PopWindow popWindow = new PopWindow(arg0,activity,text1,category,text2,text3,date,unit,remark,compare,user,id);
                 popWindow.displayPopup(arg0);
             }
 

@@ -121,6 +121,7 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                     int da2 = entity_instant.getDate();
                     String u2 = entity_instant.getUnit();
                     String r2 = entity_instant.getRemark();
+                    int id = entity_instant.getId();
                     data.put("text1", sn2);//店名
                     data.put("text2", n2);//商品名
                     data.put("text3", String.valueOf(co2));//値段
@@ -128,6 +129,7 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                     data.put("date", String.valueOf(da2));//date
                     data.put("unit", u2);//unit
                     data.put("remark", r2);//remark
+                    data.put("id", String.valueOf(id));
                     dataList.add(data);
                 }
                 Log.d("rear","rear");
@@ -142,7 +144,7 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                                 R.id.text3},
                         Compare.this,
                         this,
-                        entity);
+                        list);
 
                 // ListViewにアダプターをSETする
                 listView = (ListView) findViewById(R.id.data_list);
@@ -257,7 +259,7 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
         });
     }
 
-    public void delete_db(User u){
+    public void delete_db(int id){
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(new Runnable(){
             @Override
@@ -266,7 +268,7 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                     db = AppDatabaseSingleton.getInstance(getApplicationContext());
                     userDAO = db.userDAO();
                     //add insert
-                    userDAO.delete(u);
+                    userDAO.delete_id(id);
                     Log.d("delete","complete delete");
                     load_db();
                 } catch(Exception e){

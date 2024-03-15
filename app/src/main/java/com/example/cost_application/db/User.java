@@ -86,4 +86,8 @@ public class User {
         return this.remark_str;
     }
 
+    public int getId(){
+        return this.id;
+    }
+
 }

@@ -30,16 +30,20 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
     Compare compare;
     User user;
     private Activity activity;
+    public int id;
     //ボタンのオブジェクトを貰い受ける
     public PopWindow(View view, Activity activity,
                      String t1,String t2,String t3,String t4,String t5,String t6,String t7,
-                     Compare compare,User user) {
+                     Compare compare,User user,String id_str) {
 //        setContentView(R.layout.popup_layout);
         //引数からのローカル変数へ代入
         view_receive = view;
         this.activity = activity;
         this.compare = compare;
         this.user = user;
+        this.id = Integer.parseInt(id_str);;
+        String instant2 = user.getRemark();
+        Log.d("button","popup_remark : " + instant2);
 //        line = this.activity.findViewById(R.id.rowlayout_);
         popupWindow = new PopupWindow(this.activity);
 //        popupWindow.setWi
@@ -95,7 +99,9 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 Log.d("button","pop_delete_button");
-                compare.delete_db(user);
+                String instant = user.getRemark();
+                Log.d("button","delete_remark : " + instant);
+                compare.delete_db(id);
                 popupWindow.dismiss();
                 //reloaded db and display
                 compare.onClick(activity.findViewById(R.id.compare_done_button));
