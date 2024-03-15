@@ -55,9 +55,8 @@ public class Delete extends AppCompatActivity implements View.OnClickListener{
                     userDAO = db.userDAO();
                     //add insert
                     userDAO.deleteAll();
-                    Log.d("delete","complete all delete");
                 } catch(Exception e){
-                    Log.d("data_delete_test","error");
+//                    Log.d("data_delete_test","error");
                 }
             }
         });

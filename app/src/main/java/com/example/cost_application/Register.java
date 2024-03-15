@@ -1,6 +1,4 @@
 package com.example.cost_application;
-import android.os.AsyncTask;
-import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +17,6 @@ import com.example.cost_application.db.UserDAO;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-//import db from "../";
 
 public class Register extends AppCompatActivity implements View.OnClickListener{
     TextView t;
@@ -69,13 +66,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             //作成したuserを非同期でデータベースに挿入する
             write_db();
             hideKeyboard(remark_data);
-//            hideKeyboard(shop_name_data,category_data,name_data,cost_data,date_data,unit_data,remark_data);
-            //new InsertUserAsyncTask(userDAO).execute(user);
-            //Log.d("Register", "Item ID: " + user.shopName_str);
-            //ダイアログフラグメントのオブジェクトを生成
-            //Dialog dialog = new Dialog();
-            //ダイアログの表示
-            //dialog.show(getSupportFragmentManager(),"Dialog");
 
             startActivity(new Intent(this, Complete.class));//画面遷移
         }
@@ -95,27 +85,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                     userDAO = db.userDAO();
                     //add insert
                     userDAO.insert(user);
-                    Log.d("data_test_write","complete insert");
                     load_db();//データベースの読み込み
                 } catch(Exception e){
-                    Log.d("data_test","error");
+//                    Log.d("data_test","error");
                 }
             }
         });
     }
-//    private static class InsertUserAsyncTask extends AsyncTask<User, Void, Void> {
-//        public UserDAO userDAO;
-//
-//        private InsertUserAsyncTask(UserDAO userDAO) {
-//            this.userDAO = userDAO;
-//        }
-//
-//        @Override
-//        protected Void doInBackground(User... items) {
-//            userDAO.insert(items[0]);
-//            return null;
-//        }
-//    }
+
 
     private void load_db(){
         ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -136,11 +113,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                     int da = entity.getDate();
                     String u = entity.getUnit();
                     String r = entity.getRemark();
-
-                    Log.d("database_test",sn +":"+n+":"+cn);
-
                 }else {
-                    Log.d("no_data","no data");
+//                    Log.d("no_data","no data");
                 }
             }
         });

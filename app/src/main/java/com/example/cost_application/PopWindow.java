@@ -43,15 +43,7 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
         this.user = user;
         this.id = Integer.parseInt(id_str);;
         String instant2 = user.getRemark();
-        Log.d("button","popup_remark : " + instant2);
-//        line = this.activity.findViewById(R.id.rowlayout_);
         popupWindow = new PopupWindow(this.activity);
-//        popupWindow.setWi
-        if(popupWindow==null)Log.d("popupWindow == null　29","passed");
-        if (!activity.isFinishing() && !activity.isDestroyed()) {
-            // アクティビティは生存しており、安全にContextを使用できます。
-            Log.d("Compare.this alive in Popwindow","passed");
-        }
         // 背景設定
         popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(this.activity,R.drawable.popup_background));
         // 使用するレイアウトを指定する
@@ -65,8 +57,6 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
         field6 = (TextView)popupView.findViewById(R.id.unit_pop);
         field7 = (TextView)popupView.findViewById(R.id.remark_pop);
         //詳細をpopのなかにsetする
-        if(field1==null)Log.d("field == null　","passed");
-        if(t1==null)Log.d("t1 == null　","passed");
         field1.setText("店名 : "+t1);
         field2.setText("分類 : "+t2);
         field3.setText("名前 : "+t3);
@@ -81,14 +71,15 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
         popupWindow.setFocusable(true);
 
         // 表示サイズを設定
-//        if(findViewById(R.id.rowlayout_)==null)Log.d("findViewById(R.id.rowlayout_)==null","passed");
         popupWindow.setWidth(this.activity.findViewById(R.id.compare_all).getWidth() / 10 * 9);
-//        popupWindow.setWidth(800);
-        if(getStringLength(t3)+getStringLength(t7)>=40){
-            popupWindow.setHeight(this.activity.findViewById(R.id.compare_all).getHeight()/ 3 * 2);
-        }else{
-            popupWindow.setHeight(this.activity.findViewById(R.id.compare_all).getHeight()/2);
-        }
+//        if(getStringLength(t3)+getStringLength(t7)>=40){
+//            Log.d("coounting",String.valueOf(getStringLength(t3)+getStringLength(t7)));
+//            popupWindow.setHeight(this.activity.findViewById(R.id.compare_all).getHeight()/ 5 * 2);
+//        }else{
+//            popupWindow.setHeight(this.activity.findViewById(R.id.compare_all).getHeight()/3);
+//            Log.d("coounting",String.valueOf(getStringLength(t3)+getStringLength(t7)));
+//            Log.d("coounting",String.valueOf(this.activity.findViewById(R.id.compare_all).getHeight()/2));
+//        }
 
         // PopupWindow内のcloseボタンにクリック時の処理を定義する
         popupView.findViewById(R.id.close_button).setOnClickListener(new View.OnClickListener() {
@@ -102,9 +93,7 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
         popupView.findViewById(R.id.pop_delete_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("button","pop_delete_button");
                 String instant = user.getRemark();
-                Log.d("button","delete_remark : " + instant);
                 compare.delete_db(id);
                 popupWindow.dismiss();
                 //reloaded db and display
@@ -134,7 +123,6 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
         popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(this.activity,R.drawable.popup_background));
         // 使用するレイアウトを指定する
         popupView = this.activity.getLayoutInflater().inflate(R.layout.popup_layout, null);
-        if(popupView==null)Log.d("popupView == null　41","passed");
         popupWindow.setContentView(popupView);
 
         // popup表示時に、他のButtonなどを無効にする
@@ -152,10 +140,6 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
                 popupWindow.dismiss();
             }
         });
-//        setContentView(R.layout.activity_register);
-        //add button listener
-//        findViewById(R.id.regTomain_button).setOnClickListener(this);
-//        findViewById(R.id.done_button).setOnClickListener(this);
     }
 
     @Override
@@ -175,7 +159,6 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
 
         // 使用するレイアウトを指定する
         popupView = getLayoutInflater().inflate(R.layout.popup_layout, null);
-        if(popupView==null)Log.d("popupView == null　41","passed");
         popupWindow.setContentView(popupView);
 
         // popup表示時に、他のButtonなどを無効にする
@@ -197,7 +180,6 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
 
     // PopupWindow内のボタン押下時
     public void displayPopup(View v) {
-        if(popupView==null)Log.d("popupView == null","passed");
         popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
     }
 }

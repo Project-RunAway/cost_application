@@ -1,53 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Manual">
-    <ImageView
+    android:isScrollContainer="false"
+    android:id="@+id/scrollView_manual"
+    android:backgroundTint="@color/thin_purple">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/main_background"
-        android:scaleType="centerCrop"/>
+        tools:context=".Manual"
+        android:backgroundTint="@color/thin_purple">
 
-    <TextView
-        android:id="@+id/manual_title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Manual"
-        android:fontFamily="cursive"
-        android:textSize="12pt"
-        android:textColor="@color/blue_violet"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01" />
+        <TextView
+            android:id="@+id/manual_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manual"
+            android:fontFamily="cursive"
+            android:textSize="12pt"
+            android:textColor="@color/blue_violet"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.01" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:id="@+id/image_liner"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toBottomOf="@+id/manual_title_text">
 
-    <Button
-        android:id="@+id/mal_alldelete_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="All Delete Data"
-        android:backgroundTint="@null"
-        android:background="@drawable/button_custum"
-        android:layout_marginTop="150dp"
-        app:backgroundTint="@null"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/manual_title_text" />
-    <Button
-        android:id="@+id/manual_Tomain_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Menu"
-        android:backgroundTint="@null"
-        android:background="@drawable/button_custum"
-        android:layout_marginTop="10dp"
-        app:backgroundTint="@null"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mal_alldelete_button" />
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:src="@drawable/m" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/r"
+                android:scaleType="centerInside"/>
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/c"
+                android:scaleType="centerInside"/>
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/d"
+                android:scaleType="centerCrop"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/manual_Tomain_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menu"
+            android:backgroundTint="@null"
+            android:background="@drawable/button_custum"
+            android:layout_marginTop="10dp"
+            app:backgroundTint="@null"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_liner" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

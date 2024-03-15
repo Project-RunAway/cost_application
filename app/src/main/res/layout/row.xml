@@ -53,7 +53,6 @@
             android:textSize="16sp"
             android:fontFamily="cursive"
             android:backgroundTint="@color/purple_gs" />
-<!--        android:background="@drawable/detail_background"-->
 
     </LinearLayout>
 </LinearLayout>

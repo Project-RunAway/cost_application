@@ -43,16 +43,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.236"
         tools:ignore="MissingConstraints" />
-<!--        <TextView-->
-<!--            android:id="@+id/title_compare_text"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="compare"-->
-<!--            android:textSize="20pt"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintLeft_toLeftOf="parent"-->
-<!--            app:layout_constraintRight_toRightOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <Button
             android:id="@+id/comTomain_button"
@@ -138,7 +128,6 @@
             android:textSize="24sp"
             android:paddingLeft="16sp"
             android:fontFamily="cursive" />
-        <!--        android:background="@drawable/detail_background"-->
 
     </LinearLayout>
 
@@ -149,7 +138,6 @@
             android:layout_marginTop="3sp"
             app:layout_constraintTop_toBottomOf="@+id/row_1"
             tools:ignore="MissingConstraints" />
-<!--    </RelativeLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

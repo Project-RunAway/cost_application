@@ -11,28 +11,15 @@ import java.util.List;
 
 @Dao
 public interface UserDAO {
-//    @Query("SELECT * FROM users WHERE user_name IN (:name) AND user_pass IN(:pass)")
-//    LiveData getLoginUser(String name, String pass);//反映させるためのメソッドいらないため消すことにする
-
-//    @Query("SELECT id FROM cost_data WHERE category IN (:category)")
-//    int getSearchId(String category);
-    //String nameに一致する文字列をusersというtableのuser_nameから探し選んでそれに対応するidを返すメソッド
-
-    @Query("SELECT * FROM cost_data WHERE category =:category ORDER BY cost ASC ,date DESC")
+    @Query("SELECT * FROM cost_data WHERE category =:category ORDER BY date DESC,cost ASC ")
     List<User> getSearch_db(String category);
     //categoryが一致するもののカラムを抽出してlistで返す一旦消すことにするエラーのため
-
-//    @Query("SELECT * FROM cost_data ORDER BY cost DESC")
-//    List<User> getSearch_db(String category);
 
     @Query("SELECT id FROM cost_data WHERE name =:name AND date =:date")
     int getSearch_id(String name,int date);//商品名と日付によってそのidを返すクエリ
 
     @Query("SELECT * FROM cost_data WHERE name =:name AND date =:date")
     User getSearch_object(String name,int date);//商品名と日付によってそのobjectを返すクエリ
-
-//    @Query("SELECT FROM cost_data WHERE id =:id)
-//    User getSearch_User(int id);//idによってそのobjectを返すクエリ
 
     @Query("SELECT * FROM cost_data")
     List<User> getAll();

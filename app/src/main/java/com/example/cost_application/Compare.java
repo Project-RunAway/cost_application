@@ -66,18 +66,8 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
             hideKeyboard_0();
             return false;
         });
-//        t= findViewById(R.id.title_compare_text);
         search_bar_edit = findViewById(R.id.search_bar);
-//        db = AppDatabaseSingleton.getInstance(getApplicationContext());//データベースのインスタンス
-//        userDAO = db.userDAO();
-        //一時的にここに取得するものをかく
         load_db();
-        if (!Compare.this.isFinishing() && !Compare.this.isDestroyed()) {
-            // アクティビティは生存しており、安全にContextを使用できます。
-            Log.d("Compare.this alive in Compare.java","passed");
-        }
-
-//        new GetItemsAsyncTask(userDAO, (GetItemsAsyncTask.OnTaskCompleted) this).execute();
     }
 
     //    @Override
@@ -90,21 +80,10 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
         }else if(v.getId() == R.id.compare_done_button){
             //keyboardをたたむ
             hideKeyboard(search_bar_edit);
-            Log.d("Compare.java 77rows","passed");
             //search button push process
             //textviewの読み込み
-            if(search_bar_edit.getText().toString().isEmpty()){Log.d("Compare.java 79rows","passed");}
-            else {
-                search_category = search_bar_edit.getText().toString();
-                //listにcategoryで検索されたUserのオブジェクトを入れる
-//                long startTime = System.nanoTime();
-//                Log.d("time_Test", "—start—");
-                search_category_db(search_category);
-//                long endTime = System.nanoTime();
-//                long diff = endTime - startTime;
-//                Log.d("time_test","time–>" + diff);
-//                search_category_db(search_category);
-                //ここで本来なら処理を分岐させて最後に結合するが難しいので処理を強制停止する200ms
+            if(search_bar_edit.getText().toString().isEmpty()){
+                load_db();
                 try {
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
@@ -137,7 +116,6 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                     data.put("id", String.valueOf(id));
                     dataList.add(data);
                 }
-                Log.d("rear","rear");
                 // アダプターにデータを渡す
                 adapter = new ListViewAdapter(
                         this,
@@ -153,18 +131,61 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
 
                 // ListViewにアダプターをSETする
                 listView = (ListView) findViewById(R.id.data_list);
-//                listView.setOnTouchListener(new View.OnTouchListener()
-//                {
-//                    @Override
-//                    public boolean onTouch(View v, MotionEvent event)
-//                    {
-//                        v.getParent().requestDisallowInterceptTouchEvent(true);
-//                        return false;
-//                    }
-//                });
                 listView.setAdapter(adapter);
                 listView.setTextFilterEnabled(false);
-                Log.d("Compare.java 118rows","passed");
+            }
+            else {
+                search_category = search_bar_edit.getText().toString();
+                //listにcategoryで検索されたUserのオブジェクトを入れる
+                search_category_db(search_category);
+                //ここで本来なら処理を分岐させて最後に結合するが難しいので処理を強制停止する200ms
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                //dataのlistへの格納と表示
+                dataList = new ArrayList<Map<String, String>>();
+                // ListViewに表示するためのDataを作成する
+                for (int i = 0; i < list.size(); i++) {
+                    data = new HashMap<String, String>();
+                    User entity_instant = list.get(i);
+                    entity = list.get(i);
+                    String sn2 = entity_instant.getShop_name();
+                    String n2 = entity_instant.get_Name();
+                    String cn2 = entity_instant.getCategory();
+                    double co2 = entity_instant.getCost();
+                    int da2 = entity_instant.getDate();
+                    String u2 = entity_instant.getUnit();
+                    String r2 = entity_instant.getRemark();
+                    int id = entity_instant.getId();
+                    data.put("text1", sn2);//店名
+                    data.put("text2", n2);//商品名
+                    data.put("text3", String.valueOf(co2));//値段
+                    data.put("category", cn2);//category
+                    data.put("date", String.valueOf(da2));//date
+                    data.put("unit", u2);//unit
+                    data.put("remark", r2);//remark
+                    data.put("id", String.valueOf(id));
+                    dataList.add(data);
+                }
+                // アダプターにデータを渡す
+                adapter = new ListViewAdapter(
+                        this,
+                        dataList,
+                        R.layout.row,
+                        new String[]{"text1", "text2", "text3"},
+                        new int[]{android.R.id.text1,
+                                android.R.id.text2,
+                                R.id.text3},
+                        Compare.this,
+                        this,
+                        list);
+
+                // ListViewにアダプターをSETする
+                listView = (ListView) findViewById(R.id.data_list);
+                listView.setAdapter(adapter);
+                listView.setTextFilterEnabled(false);
             }
         }
         //名残
@@ -199,13 +220,9 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
             public void run(){
                 db = AppDatabaseSingleton.getInstance(getApplicationContext());
                 userDAO =db.userDAO();
-
-                //test 全ての取得
-                //list = userDAO.getAll();
                 //カテゴリで絞って取得
                 list = userDAO.getSearch_db(search);
                 //listの値段順にソートする
-                Log.d("front","front");
 
                 if(list.size() > 0){
                     for(int number=0;number<list.size();number++) {
@@ -217,13 +234,8 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                         int da = entity.getDate();
                         String u = entity.getUnit();
                         String r = entity.getRemark();
-
-                        Log.d("database_category", sn + ":" + n + ":" + cn+ ":" + co+ ":" + da+ ":" + u+ ":" + r);
                     }
-                }else {
-                    Log.d("front","front");
-                    Log.d("no_data","no data");
-                }
+                }else {}
             }
         });
     }
@@ -249,11 +261,10 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                         int da = entity.getDate();
                         String u = entity.getUnit();
                         String r = entity.getRemark();
-
-                        Log.d("database_test", sn + ":" + n + ":" + cn+ ":" + co+ ":" + da+ ":" + u+ ":" + r);
+//                        Log.d("database_test", sn + ":" + n + ":" + cn+ ":" + co+ ":" + da+ ":" + u+ ":" + r);
                     }
                 }else {
-                    Log.d("no_data","no data");
+//                    Log.d("no_data","no data");
                 }
             }
         });
@@ -270,11 +281,8 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                     userDAO = db.userDAO();
                     //add insert
                     userDAO.insert(user);
-                    Log.d("data_test_write","complete insert");
                     load_db();
-                } catch(Exception e){
-                    Log.d("data_test","error");
-                }
+                } catch(Exception e){}
             }
         });
     }
@@ -289,10 +297,9 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
                     userDAO = db.userDAO();
                     //add insert
                     userDAO.delete_id(id);
-                    Log.d("delete","complete delete");
                     load_db();
                 } catch(Exception e){
-                    Log.d("data_delete_test","error");
+//                    Log.d("data_delete_test","error");
                 }
             }
         });
@@ -302,41 +309,4 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
         InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Compare.this.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
-
-//    @Override
-//    public void onTaskCompleted(List<User> items) {
-//        // ここで取得したアイテムリストを処理
-//        // 例: ログに出力
-//        for (User item : items) {
-//            Log.d("Database", "Item ID: " + item.id);
-//        }
-//    }
-
-//    private static class GetItemsAsyncTask extends AsyncTask<Void, Void, List<User>> {
-//        private UserDAO userDAO;
-//        private OnTaskCompleted listener;
-//
-//        GetItemsAsyncTask(UserDAO userDAO, OnTaskCompleted listener) {
-//            this.userDAO = userDAO;
-//            this.listener = listener;
-//        }
-//
-//        @Override
-//        protected List<User> doInBackground(Void... voids) {
-//            return userDAO.getAll();
-//        }
-//
-//        @Override
-//        protected void onPostExecute(List<User> items) {//itemsのなかに取得したUserのリストが入っている
-//            super.onPostExecute(items);
-//            for(User item : items){
-//                Log.d("compare","Item shopname : " + item.shopName_str);
-//            }
-//            listener.onTaskCompleted(items);
-//        }
-//
-//        public interface OnTaskCompleted {
-//            void onTaskCompleted(List<User> items);
-//        }
-//    }
 }

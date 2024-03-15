@@ -112,50 +112,6 @@ public class ListViewAdapter extends SimpleAdapter {
             }
 
         });
-
         return view;
     }
-
-//    @Override
-//    public View getView(final int position, View convertView, ViewGroup parent) {
-//        final ViewHolder holder;
-//
-//        // ビューを受け取る
-//        View view = convertView;
-//
-//        if (view == null) {
-//            // 画面起動時にViewHolderを作成する
-//            view = inflater.inflate(R.layout.row, parent, false);
-//
-//            holder = new ViewHolder();
-//            holder.text1 = (TextView) view.findViewById(android.R.id.text1);
-//            holder.text2 = (TextView) view.findViewById(android.R.id.text2);
-//            holder.text3 = (TextView) view.findViewById(R.id.text3);
-//
-//            view.setTag(holder);
-//        } else {
-//            // 行選択時などは既に作成されているものを取得する
-//            holder = (ViewHolder) view.getTag();
-//        }
-//
-//        String text1 = ((HashMap<?, ?>) listData.get(position)).get("text1").toString();
-//        String text2 = ((HashMap<?, ?>) listData.get(position)).get("text2").toString();
-//        String text3 = ((HashMap<?, ?>) listData.get(position)).get("text3").toString();
-//        holder.text1.setText(text1);
-//        holder.text2.setText(text2);
-//        holder.text3.setText(text3);
-//
-//        // セル上にあるボタンの処理
-//        Button btn = (Button) view.findViewById(R.id.rowbutton);
-//        btn.setTag(position);
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View arg0) {
-//                // 選択したセルの文字を赤色にする
-//                holder.text1.setTextColor(Color.RED);
-//            }
-//        });
-//
-//        return view;
-//    }
 }

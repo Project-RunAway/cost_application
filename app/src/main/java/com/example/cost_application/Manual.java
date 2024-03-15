@@ -29,8 +29,5 @@ public class Manual extends AppCompatActivity implements View.OnClickListener{
             //register button push process
             startActivity(new Intent(this, MainActivity.class));
         }
-        //名残
-        Snackbar.make(v, "ボタンが押されました", Snackbar.LENGTH_SHORT).show();
-        //
     }
 }

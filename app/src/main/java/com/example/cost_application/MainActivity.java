@@ -40,8 +40,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //compare button push process
             startActivity(new Intent(this, Manual.class));
         }
-        //名残
-        Snackbar.make(v, "ボタンが押されました", Snackbar.LENGTH_SHORT).show();
-        //
     }
 }
