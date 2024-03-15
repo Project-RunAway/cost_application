@@ -84,7 +84,11 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
 //        if(findViewById(R.id.rowlayout_)==null)Log.d("findViewById(R.id.rowlayout_)==null","passed");
         popupWindow.setWidth(this.activity.findViewById(R.id.compare_all).getWidth() / 10 * 9);
 //        popupWindow.setWidth(800);
-        popupWindow.setHeight(this.activity.findViewById(R.id.compare_all).getHeight()/ 2);
+        if(getStringLength(t3)+getStringLength(t7)>=40){
+            popupWindow.setHeight(this.activity.findViewById(R.id.compare_all).getHeight()/ 3 * 2);
+        }else{
+            popupWindow.setHeight(this.activity.findViewById(R.id.compare_all).getHeight()/2);
+        }
 
         // PopupWindow内のcloseボタンにクリック時の処理を定義する
         popupView.findViewById(R.id.close_button).setOnClickListener(new View.OnClickListener() {
@@ -108,6 +112,18 @@ public class PopWindow extends AppCompatActivity implements View.OnClickListener
             }
         });
 
+    }
+
+    public static int getStringLength(String str) {
+        //戻り値
+        int res = 0;
+        //全角半角判定
+        char[] c = str.toCharArray();
+        for(int i=0;i<c.length;i++) {
+            if(String.valueOf(c[i]).getBytes().length <= 1)res += 1; //半角文字なら＋１
+            else res += 2; //全角文字なら＋２
+        }
+        return res;
     }
 
     @Override

@@ -17,6 +17,7 @@ public class Complete extends AppCompatActivity implements View.OnClickListener{
         //add button listener
         findViewById(R.id.completeTomain_button).setOnClickListener(this);
         findViewById(R.id.completeTocom_button).setOnClickListener(this);
+        findViewById(R.id.completeToregister_button).setOnClickListener(this);
         t= findViewById(R.id.title_complete_text);
     }
 
@@ -29,6 +30,9 @@ public class Complete extends AppCompatActivity implements View.OnClickListener{
         } else if (v.getId() == R.id.completeTocom_button) {
             //register button push process
             startActivity(new Intent(this, Compare.class));
+        }else if (v.getId() == R.id.completeToregister_button) {
+            //register button push process
+            startActivity(new Intent(this, Register.class));
         }
         //名残
         Snackbar.make(v, "ボタンが押されました", Snackbar.LENGTH_SHORT).show();

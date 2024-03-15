@@ -46,6 +46,7 @@ public interface UserDAO {
     void delete_id(int x);
 
 
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(User user);
 

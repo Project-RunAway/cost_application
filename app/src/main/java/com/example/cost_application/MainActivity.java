@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.register_button).setOnClickListener(this);
         findViewById(R.id.delete_button).setOnClickListener(this);
         findViewById(R.id.compare_button).setOnClickListener(this);
+        findViewById(R.id.manual_button).setOnClickListener(this);
         t= findViewById(R.id.title_text);
     }
 
@@ -35,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v.getId() == R.id.compare_button) {
             //compare button push process
             startActivity(new Intent(this, Compare.class));
+        }else if (v.getId() == R.id.manual_button) {
+            //compare button push process
+            startActivity(new Intent(this, Manual.class));
         }
         //名残
         Snackbar.make(v, "ボタンが押されました", Snackbar.LENGTH_SHORT).show();

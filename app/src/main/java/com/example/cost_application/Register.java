@@ -35,6 +35,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         //add button listener
         findViewById(R.id.regTomain_button).setOnClickListener(this);
         findViewById(R.id.done_button).setOnClickListener(this);
+        findViewById(R.id.register_layout).setOnTouchListener((v, event) -> {
+            hideKeyboard_0();
+            return false;
+        });
         t= findViewById(R.id.title_register_text);
         shop_name_data= findViewById(R.id.edit_shopname);
         category_data= findViewById(R.id.edit_category);
@@ -156,6 +160,13 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
     private void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Register.this.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    private void hideKeyboard_0() {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Register.this.INPUT_METHOD_SERVICE);
+        if (inputMethodManager != null && getCurrentFocus() != null) {
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
     }
 }
 

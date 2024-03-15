@@ -3,6 +3,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -61,6 +62,10 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
         //add button listener
         findViewById(R.id.comTomain_button).setOnClickListener(this);
         findViewById(R.id.compare_done_button).setOnClickListener(this);
+        findViewById(R.id.compare_all).setOnTouchListener((v, event) -> {
+            hideKeyboard_0();
+            return false;
+        });
 //        t= findViewById(R.id.title_compare_text);
         search_bar_edit = findViewById(R.id.search_bar);
 //        db = AppDatabaseSingleton.getInstance(getApplicationContext());//データベースのインスタンス
@@ -148,13 +153,22 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
 
                 // ListViewにアダプターをSETする
                 listView = (ListView) findViewById(R.id.data_list);
+//                listView.setOnTouchListener(new View.OnTouchListener()
+//                {
+//                    @Override
+//                    public boolean onTouch(View v, MotionEvent event)
+//                    {
+//                        v.getParent().requestDisallowInterceptTouchEvent(true);
+//                        return false;
+//                    }
+//                });
                 listView.setAdapter(adapter);
                 listView.setTextFilterEnabled(false);
                 Log.d("Compare.java 118rows","passed");
             }
         }
         //名残
-        Snackbar.make(v, "ボタンが押されました", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(v, "リストを表示", Snackbar.LENGTH_SHORT).show();
         //
     }
 
@@ -163,6 +177,12 @@ public class Compare extends AppCompatActivity implements View.OnClickListener{
 
     }
 
+    private void hideKeyboard_0() {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Compare.this.INPUT_METHOD_SERVICE);
+        if (inputMethodManager != null && getCurrentFocus() != null) {
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
 
     private void swift(User a,User b){
         User instant;
