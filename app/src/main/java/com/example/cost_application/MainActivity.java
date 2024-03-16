@@ -1,6 +1,7 @@
 package com.example.cost_application;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.compare_button).setOnClickListener(this);
         findViewById(R.id.manual_button).setOnClickListener(this);
         t= findViewById(R.id.title_text);
+        //全てのアクティビティでダークモードをオフにする
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
 
     //    @Override

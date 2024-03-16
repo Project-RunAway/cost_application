@@ -2,14 +2,18 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:weightSum="1"
     android:id="@+id/rowlayout_">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id = "@+id/row_lay_sub">
+        android:id = "@+id/row_lay_sub"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
         <TextView
             android:id="@+id/text1"
@@ -19,7 +23,11 @@
             android:text="Text1"
             android:layout_weight="0.2"
             android:textSize="18dp"
-            android:paddingLeft="12dp"/>
+            android:paddingLeft="12dp"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="1dp"
+            app:autoSizeMaxTextSize="50dp"
+            android:maxLines="1"/>
 
         <TextView
             android:id="@+id/text2"
@@ -28,8 +36,11 @@
             android:text="Text2"
             android:layout_weight="0.4"
             android:gravity="center_vertical|center_horizontal"
-            android:textSize="18dp" />
-<!--        android:paddingRight="16dp"-->
+            android:textSize="18dp"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="1dp"
+            app:autoSizeMaxTextSize="50dp"
+            android:maxLines="1"/>
 
         <TextView
             android:id="@+id/text3"
@@ -40,7 +51,11 @@
             android:gravity="center_vertical|right"
             android:textSize="12dp"
             android:paddingRight="12dp"
-            android:textAppearance="?android:attr/textAppearanceListItem"/>
+            android:textAppearance="?android:attr/textAppearanceListItem"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="1dp"
+            app:autoSizeMaxTextSize="50dp"
+            android:maxLines="1"/>
 
         <Button
             android:id="@+id/rowbutton"
@@ -52,7 +67,11 @@
             android:text="detail"
             android:textSize="16sp"
             android:fontFamily="cursive"
-            android:backgroundTint="@color/purple_gs" />
+            android:backgroundTint="@color/purple_gs"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="1dp"
+            app:autoSizeMaxTextSize="50dp"
+            android:maxLines="1"/>
 
     </LinearLayout>
 </LinearLayout>

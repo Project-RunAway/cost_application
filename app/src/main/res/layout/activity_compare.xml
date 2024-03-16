@@ -7,137 +7,132 @@
     android:layout_height="match_parent"
     android:isScrollContainer="false"
     android:id="@+id/scrollView">
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Compare"
-    android:id="@+id/compare_all">
-
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        tools:ignore="MissingConstraints">-->
-
-    <ImageView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/main_background"
-        android:scaleType="centerCrop"/>
+        tools:context=".Compare"
+        android:id="@+id/compare_all">
 
-    <EditText
-        android:id="@+id/search_bar"
-        android:layout_width="230sp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="5dp"
-        android:backgroundTint="@null"
-        android:background="@drawable/edittext_backgroud"
-        app:backgroundTint="@null"
-        android:hint=" enter category"
-        android:inputType="text"
-        android:textSize="28sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.236"
-        tools:ignore="MissingConstraints" />
-
-        <Button
-            android:id="@+id/comTomain_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Menu"
-            android:fontFamily="cursive"
-            android:backgroundTint="@null"
-            android:background="@drawable/button_custum"
-            android:layout_marginTop="5dp"
-            android:textSize="28sp"
-            app:backgroundTint="@null"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/data_list" />
-
-        <Button
-            android:id="@+id/compare_done_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Done"
-            android:textSize="28sp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="7dp"
-            android:fontFamily="cursive"
-            android:backgroundTint="@null"
-            android:background="@drawable/button_custum"
-            app:backgroundTint="@null"
-            app:layout_constraintStart_toEndOf="@id/search_bar"
-            app:layout_constraintTop_toTopOf="@id/search_bar"
-            app:layout_constraintBottom_toBottomOf="@id/search_bar" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id = "@+id/row_1"
-        app:layout_constraintTop_toBottomOf="@+id/search_bar"
-        android:layout_marginTop="15dp"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-            android:id="@+id/text_shop"
-            android:layout_width="18sp"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:text="Shop"
-            android:fontFamily="cursive"
-            android:layout_weight="0.2"
-            android:textSize="24dp"
-            android:paddingLeft="12dp"/>
-
-        <TextView
-            android:id="@+id/text_name"
-            android:layout_width="38sp"
-            android:layout_height="match_parent"
-            android:text="Name"
-            android:fontFamily="cursive"
-            android:layout_weight="0.4"
-            android:gravity="center_vertical|center_horizontal"
-            android:textSize="24dp" />
-        <!--        android:paddingRight="16dp"-->
-
-        <TextView
-            android:id="@+id/text_cost"
-            android:layout_width="18sp"
-            android:layout_height="match_parent"
-            android:text="Cost"
-            android:fontFamily="cursive"
-            android:layout_weight="0.2"
-            android:gravity="center_vertical|right"
-            android:textSize="24dp"
-            android:paddingRight="12dp"
-            android:textAppearance="?android:attr/textAppearanceListItem"/>
-
-        <TextView
-            android:id="@+id/text_detail"
-            android:layout_width="20sp"
-            android:layout_height="match_parent"
-            android:focusable="false"
-            android:layout_weight="0.2"
-            android:focusableInTouchMode="false"
-            android:text="detail"
-            android:textSize="24sp"
-            android:paddingLeft="16sp"
-            android:fontFamily="cursive" />
-
-    </LinearLayout>
-
-        <com.example.cost_application.Extend_ListView
-            android:id="@+id/data_list"
+        <ImageView
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/main_background"
+            android:scaleType="centerCrop"/>
+
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="200sp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3sp"
-            app:layout_constraintTop_toBottomOf="@+id/row_1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@null"
+            android:background="@drawable/edittext_backgroud"
+            app:backgroundTint="@null"
+            android:hint=" enter category"
+            android:inputType="text"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.236"
             tools:ignore="MissingConstraints" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/comTomain_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Menu"
+                android:fontFamily="cursive"
+                android:backgroundTint="@null"
+                android:background="@drawable/button_custum"
+                android:layout_marginTop="5dp"
+                android:textSize="28sp"
+                app:backgroundTint="@null"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/data_list" />
+
+            <Button
+                android:id="@+id/compare_done_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Done"
+                android:textSize="28sp"
+                android:gravity="right"
+                android:layout_marginTop="7dp"
+                android:fontFamily="cursive"
+                android:backgroundTint="@null"
+                android:background="@drawable/button_custum"
+                app:backgroundTint="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/search_bar"
+                app:layout_constraintBottom_toBottomOf="@id/search_bar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id = "@+id/row_1"
+            app:layout_constraintTop_toBottomOf="@+id/search_bar"
+            android:layout_marginTop="15dp"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/text_shop"
+                android:layout_width="18sp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Shop"
+                android:fontFamily="cursive"
+                android:layout_weight="0.2"
+                android:textSize="24dp"
+                android:paddingLeft="12dp"/>
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="38sp"
+                android:layout_height="match_parent"
+                android:text="Name"
+                android:fontFamily="cursive"
+                android:layout_weight="0.4"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="24dp" />
+            <!--        android:paddingRight="16dp"-->
+
+            <TextView
+                android:id="@+id/text_cost"
+                android:layout_width="18sp"
+                android:layout_height="match_parent"
+                android:text="Cost"
+                android:fontFamily="cursive"
+                android:layout_weight="0.2"
+                android:gravity="center_vertical|right"
+                android:textSize="24dp"
+                android:paddingRight="12dp"
+                android:textAppearance="?android:attr/textAppearanceListItem"/>
+
+            <TextView
+                android:id="@+id/text_detail"
+                android:layout_width="20sp"
+                android:layout_height="match_parent"
+                android:focusable="false"
+                android:layout_weight="0.2"
+                android:focusableInTouchMode="false"
+                android:text="detail"
+                android:textSize="24sp"
+                android:paddingLeft="16sp"
+                android:fontFamily="cursive" />
+
+        </LinearLayout>
+
+            <com.example.cost_application.Extend_ListView
+                android:id="@+id/data_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3sp"
+                app:layout_constraintTop_toBottomOf="@+id/row_1"
+                tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
